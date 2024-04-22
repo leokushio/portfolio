@@ -22,7 +22,7 @@ ThemeData darkMode = ThemeData(
     background: Colors.grey.shade900,
     primary: Colors.grey.shade600,
     secondary: Colors.grey.shade700,
-    tertiary: Colors.grey.shade800,
+    tertiary: const Color.fromARGB(255, 38, 38, 38),
     inversePrimary: Colors.grey.shade300,
     surfaceTint: const Color(0xFFE4E7E6),
     surfaceVariant: const Color(0xFF4a4a4a),

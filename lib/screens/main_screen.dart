@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/providers/theme_provider.dart';
-import 'package:portfolio/widgets/dashboard_widget.dart';
-import 'package:portfolio/widgets/drawer_menu.dart';
+import 'package:portfolio/sections/dashboard_widget.dart';
+import 'package:portfolio/sections/drawer_menu.dart';
+import 'package:portfolio/sections/profile_column_Widget.dart';
 import 'package:provider/provider.dart';
 
 class MainScreen extends StatelessWidget {
@@ -50,7 +51,7 @@ class MainScreen extends StatelessWidget {
               ),
             Expanded(
               flex: 3,
-              child: Container(color: Colors.greenAccent,)
+              child: ProfileColumnWidget()
               ),
           ],
         )
