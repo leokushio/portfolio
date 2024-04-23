@@ -16,6 +16,7 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               flex: 2,

@@ -23,6 +23,7 @@ class DashboardWidget extends StatelessWidget {
             SizedBox(height: 15,),
             BarChartCard(),
             
+            
       
           ],
         ),
