@@ -4,6 +4,7 @@ import 'package:portfolio/providers/theme_provider.dart';
 import 'package:portfolio/sections/dashboard_widget.dart';
 import 'package:portfolio/sections/drawer_menu.dart';
 import 'package:portfolio/sections/profile_column_Widget.dart';
+import 'package:portfolio/util/responsive.dart';
 import 'package:provider/provider.dart';
 
 class MainScreen extends StatelessWidget {
@@ -12,44 +13,28 @@ class MainScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    // Color txt = Theme.of(context).colorScheme.inversePrimary;
+    final isDesktop = Responsive.isDesktop(context);
     return Scaffold(
+      drawer: !isDesktop
+      ? const SizedBox(
+        width: 250,
+        child: DrawerMenu(),
+      )
+      : null,
       body: SafeArea(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            if (isDesktop)
             Expanded(
               flex: 2,
-              child: Container(
-                color: Theme.of(context).colorScheme.tertiary,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    DrawerMenu(),
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('Light Mode',
-                          style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
-                          ),
-                          CupertinoSwitch(
-                            value: context.watch<ThemeProvider>().isSwitched, 
-                            onChanged: (value) {
-                              context.read<ThemeProvider>().switchTheme();
-                            }),
-                        ],
-                      ),
-                    )
-                    ],
-                ),
-              )
+              child: DrawerMenu()
               ),
             Expanded(
               flex: 7,
               child: DashboardWidget()
               ),
+            if (!Responsive.isMobile(context))
             Expanded(
               flex: 3,
               child: ProfileColumnWidget()

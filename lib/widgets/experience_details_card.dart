@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/data/experience_data.dart';
+import 'package:portfolio/util/responsive.dart';
 import 'package:portfolio/widgets/custom_card.dart';
 
 class ExperienceDetailsCard extends StatelessWidget {
@@ -12,9 +13,9 @@ class ExperienceDetailsCard extends StatelessWidget {
       itemCount: experienceDetails.experienceData.length,
       shrinkWrap: true,
       physics: const ScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 4,
-        crossAxisSpacing: 15,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: !Responsive.isMobile(context) ? 4 : 2,
+        crossAxisSpacing: !Responsive.isMobile(context) ? 15 : 12,
         mainAxisSpacing: 12
         ), 
       itemBuilder: (context, index) => CustomCard(
