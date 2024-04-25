@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/providers/theme_provider.dart';
 import 'package:portfolio/sections/dashboard_widget.dart';
 import 'package:portfolio/sections/drawer_menu.dart';
-import 'package:portfolio/sections/profile_column_Widget.dart';
+import 'package:portfolio/sections/profile_column_widget.dart';
 import 'package:portfolio/util/responsive.dart';
 import 'package:provider/provider.dart';
 
