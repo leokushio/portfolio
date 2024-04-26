@@ -10,6 +10,7 @@ import 'package:portfolio/widgets/barchart_side_info.dart';
 import 'package:portfolio/widgets/barchart_sideinfo_buttom.dart';
 import 'package:portfolio/widgets/experience_details_card.dart';
 import 'package:portfolio/widgets/my_title.dart';
+import 'package:portfolio/widgets/showcase_widget.dart';
 
 class DashboardWidget extends StatelessWidget {
   const DashboardWidget({super.key});
@@ -34,6 +35,19 @@ class DashboardWidget extends StatelessWidget {
                   BarChartCard(),
                   if(Responsive.isMobile(context))
                   BarchartSideInfoButtom(),
+                  SizedBox(height: 15,),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'My Projects',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold
+                      ),
+                      ),
+                  ),
+                  SizedBox(height: 15,),
+                  ShowcaseWidget(),
                   if(Responsive.isMobile(context))
                   SocialsData()
 
