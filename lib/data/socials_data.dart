@@ -15,6 +15,7 @@ class SocialsData extends StatelessWidget {
   ];
 
     return Container(
+      
       constraints: BoxConstraints(maxHeight: 200, maxWidth: 300),
       child: ListView.builder(
         itemCount: socialsList.length,

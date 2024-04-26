@@ -29,9 +29,11 @@ class ProfileColumnWidget extends StatelessWidget {
           ),
         SizedBox(height: 10,),
         Text('Mobile/Web app Developer'),
-        SizedBox(height: 20,),
+        SizedBox(height: 10,),
         //----------------------------------info block
         InfoCard(),
+        if(!Responsive.isMobile(context))
+        SizedBox(height: 10,),
         if(!Responsive.isMobile(context))
         SocialsData()
       ],

@@ -2,11 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/data/drawer_menu_data.dart';
 import 'package:portfolio/providers/theme_provider.dart';
+import 'package:portfolio/sections/dashboard_widget.dart';
 import 'package:portfolio/themes/theme_modes.dart';
 import 'package:provider/provider.dart';
 
 class DrawerMenu extends StatefulWidget {
-  const DrawerMenu({super.key});
+  final GlobalKey projectKey;
+  const DrawerMenu({super.key, required this.projectKey});
 
   @override
   State<DrawerMenu> createState() => _DrawerMenuState();
@@ -16,8 +18,6 @@ class _DrawerMenuState extends State<DrawerMenu> {
   int isSelected = 0;
   @override
   Widget build(BuildContext context) {
-    
-    
     return Container(
       color: Theme.of(context).colorScheme.tertiary,
       child: Column(
@@ -37,7 +37,11 @@ class _DrawerMenuState extends State<DrawerMenu> {
                     onTap: (){
                       setState(() {
                         isSelected = index;
-                      });           
+                      });  
+                      Scrollable.ensureVisible(
+                        widget.projectKey.currentContext!,
+                        duration: Duration(milliseconds: 500)
+                        );
                     },
                     borderRadius: BorderRadius.circular(7),
                     child: Container(

@@ -13,12 +13,14 @@ class MainScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+    final projectKey = GlobalKey();
+    final ScrollController projectContainer = ScrollController();
     final isDesktop = Responsive.isDesktop(context);
     return Scaffold(
       drawer: !isDesktop
-      ? const SizedBox(
+      ? SizedBox(
         width: 250,
-        child: DrawerMenu(),
+        child: DrawerMenu(projectKey: projectKey,),
       )
       : null,
       body: SafeArea(
@@ -28,11 +30,11 @@ class MainScreen extends StatelessWidget {
             if (isDesktop)
             Expanded(
               flex: 2,
-              child: DrawerMenu()
+              child: DrawerMenu(projectKey: projectKey,)
               ),
             Expanded(
               flex: 7,
-              child: DashboardWidget()
+              child: DashboardWidget(projectContainer: projectContainer,projectKey: projectKey,)
               ),
             if (!Responsive.isMobile(context))
             Expanded(

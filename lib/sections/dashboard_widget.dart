@@ -13,7 +13,13 @@ import 'package:portfolio/widgets/my_title.dart';
 import 'package:portfolio/widgets/showcase_widget.dart';
 
 class DashboardWidget extends StatelessWidget {
-  const DashboardWidget({super.key});
+  final ScrollController projectContainer;
+  final GlobalKey projectKey;
+  const DashboardWidget({
+    super.key, 
+    required this.projectContainer,
+    required this.projectKey
+    });
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +28,7 @@ class DashboardWidget extends StatelessWidget {
         MyTitle(),
         Expanded(
           child: SingleChildScrollView(
+            controller: projectContainer,
             child: Padding(
               padding: const EdgeInsets.only(left: 18,right: 18),
               child: Column(
@@ -37,6 +44,7 @@ class DashboardWidget extends StatelessWidget {
                   BarchartSideInfoButtom(),
                   SizedBox(height: 15,),
                   Padding(
+                    key: projectKey,
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       'My Projects',

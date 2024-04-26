@@ -8,9 +8,9 @@ class MyTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 70, 
+      height: 60, 
       child: Padding(
-        padding: const EdgeInsets.only(top: 10,bottom: 20, left: 20),
+        padding: const EdgeInsets.only(top: 12,bottom: 10, left: 20),
         child: SizedBox(
           width: double.maxFinite,
           child: Row(
