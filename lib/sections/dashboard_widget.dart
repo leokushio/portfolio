@@ -7,6 +7,7 @@ import 'package:portfolio/widgets/barchart_card.dart';
 
 import 'package:portfolio/widgets/barchart_sideinfo_buttom.dart';
 import 'package:portfolio/widgets/experience_details_card.dart';
+import 'package:portfolio/widgets/gamedev_widget.dart';
 import 'package:portfolio/widgets/my_title.dart';
 import 'package:portfolio/widgets/showcase_widget.dart';
 import 'package:provider/provider.dart';
@@ -58,18 +59,7 @@ class DashboardWidget extends StatelessWidget {
                   if(Responsive.isMobile(context))
                   const BarchartSideInfoButtom(),
                   const SizedBox(height: 15,),
-                  const Padding(
-                    // key: projectKey,
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      'My Projects',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold
-                      ),
-                      ),
-                  ),
-                  const SizedBox(height: 15,),
+                  
 
                   // in the below VisibilityDetector widget switches which menu button
                   // is selected.
@@ -85,6 +75,7 @@ class DashboardWidget extends StatelessWidget {
                       }
                     },
                     ),
+                  GamedevWidget(),
                   if(Responsive.isMobile(context))
                   const SocialsData()
 

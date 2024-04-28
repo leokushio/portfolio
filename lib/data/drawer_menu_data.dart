@@ -4,7 +4,7 @@ import 'package:portfolio/models/drawer_menu_model.dart';
 
 List drawerMenuData = <DrawerMenuModel>[
   DrawerMenuModel(title: 'Dashboard', icon: Icons.home),
-  DrawerMenuModel(title: 'Profile', icon: Icons.person),
-  DrawerMenuModel(title: 'Settings', icon: Icons.settings),
-  DrawerMenuModel(title: 'History', icon: Icons.history),
+  DrawerMenuModel(title: 'Projects', icon: Icons.dashboard_rounded),
+  DrawerMenuModel(title: 'Game Dev', icon: Icons.gamepad),
+  DrawerMenuModel(title: 'About Me', icon: Icons.person),
 ];
