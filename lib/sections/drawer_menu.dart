@@ -8,16 +8,29 @@ import 'package:provider/provider.dart';
 
 class DrawerMenu extends StatefulWidget {
   final GlobalKey projectKey;
-  const DrawerMenu({super.key, required this.projectKey});
+  final GlobalKey dashKey;
+  final GlobalKey socialtKey;
+  const DrawerMenu({
+    super.key, 
+    required this.projectKey,
+    required this.dashKey,
+    required this.socialtKey
+    });
 
   @override
   State<DrawerMenu> createState() => _DrawerMenuState();
 }
 
 class _DrawerMenuState extends State<DrawerMenu> {
-  int isSelected = 0;
+  // int isSelected = 0;
   @override
   Widget build(BuildContext context) {
+    final  myKeys = <GlobalKey>[  
+      widget.dashKey,
+      widget.projectKey,
+      widget.socialtKey,
+    ];
+    final isSelected = context.read<ThemeProvider>().isSelected;
     return Container(
       color: Theme.of(context).colorScheme.tertiary,
       child: Column(
@@ -35,13 +48,15 @@ class _DrawerMenuState extends State<DrawerMenu> {
                   padding: const EdgeInsets.only(bottom: 5.0,),
                   child: InkWell(
                     onTap: (){
-                      setState(() {
-                        isSelected = index;
-                      });  
+                      // setState(() {
+                      //   isSelected = index;
+                      // });
+                      Provider.of<ThemeProvider>(context, listen: false).switchButton(index);  
                       Scrollable.ensureVisible(
-                        widget.projectKey.currentContext!,
+                        myKeys[index].currentContext!,
                         duration: Duration(milliseconds: 500)
                         );
+                    //  widget.projectKey.currentContext!.findRenderObject();
                     },
                     borderRadius: BorderRadius.circular(7),
                     child: Container(
