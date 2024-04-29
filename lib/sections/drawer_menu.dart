@@ -44,16 +44,16 @@ class _DrawerMenuState extends State<DrawerMenu> {
             
             children: [
               Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(15.0),
             child: Container(
-              height: 30,
+              height: 25,
               child: Row(
                 children: [
                   GestureDetector(
                     onTap: () => changeLang.toRus(),
                     child: Image.asset('assets/rus.png'),
                   ),
-                  const SizedBox(width: 10,),
+                  const SizedBox(width: 15,),
                   GestureDetector(
                     onTap: () => changeLang.toEng(),
                     child: Image.asset('assets/eng.png'),
@@ -65,7 +65,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
               //--------------------------------------------menu
               Container(
                 
-                padding: EdgeInsets.only(top: 70, left: 10, right: 10 ),
+                padding: EdgeInsets.only(top: 50, left: 10, right: 10 ),
                 child: ListView.builder(
                   shrinkWrap: true,
                   itemCount: drawerMenuData.length,

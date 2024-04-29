@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/providers/language_provider.dart';
 import 'package:portfolio/util/responsive.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ShowcaseWidget extends StatelessWidget {
@@ -22,6 +24,7 @@ class ShowcaseWidget extends StatelessWidget {
       MockupModel(assetString: 'assets/portfolio_mockup.png', title: 'Portfolio App'),
       MockupModel(assetString: 'assets/chatapp_mockup.png', title: 'Chat app'),
     ];
+    final lang = context.watch<LanguageProvider>().language;
     return Column(
       children: [
         //--------------------------------------heading
@@ -31,7 +34,7 @@ class ShowcaseWidget extends StatelessWidget {
           child: Container(
             width: double.maxFinite,
             child: Text(
-              'My Projects',
+              lang == 'eng' ? 'My Projects' : 'Проекты',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w100
