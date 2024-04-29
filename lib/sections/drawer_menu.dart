@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/data/drawer_menu_data.dart';
+import 'package:portfolio/providers/language_provider.dart';
 import 'package:portfolio/providers/theme_provider.dart';
 import 'package:portfolio/sections/dashboard_widget.dart';
 import 'package:portfolio/themes/theme_modes.dart';
@@ -31,88 +32,116 @@ class _DrawerMenuState extends State<DrawerMenu> {
       widget.socialtKey,
     ];
     final isSelected = context.read<ThemeProvider>().isSelected;
+    final changeLang = context.read<LanguageProvider>();
+    String lang = context.watch<LanguageProvider>().language;
     return Container(
       color: Theme.of(context).colorScheme.tertiary,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
+          //------------------------------------------lang change
+          Column(
             
-            padding: EdgeInsets.only(top: 100, left: 10, right: 10 ),
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: drawerMenuData.length,
-              itemBuilder: (context, index) {
-                bool selected = isSelected == index;
-                return Padding(           
-                  padding: const EdgeInsets.only(bottom: 5.0,),
-                  child: InkWell(
-                    onTap: (){
-                      // setState(() {
-                      //   isSelected = index;
-                      // });
-                      Provider.of<ThemeProvider>(context, listen: false).switchButton(index);  
-                      Scrollable.ensureVisible(
-                        myKeys[index].currentContext!,
-                        duration: Duration(milliseconds: 500)
-                        );
-                    //  widget.projectKey.currentContext!.findRenderObject();
-                    },
-                    borderRadius: BorderRadius.circular(7),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: selected 
-                        ? Theme.of(context).colorScheme.surfaceTint
-                        : Colors.transparent,
-                        borderRadius: BorderRadius.circular(7)
-                      ),
-                      padding: EdgeInsets.all(8),
-                      child: Row(
-                        children: [
-                          Icon(
-                            drawerMenuData[index].icon,
-                            color: selected 
-                              ? Colors.amber
-                              : Theme.of(context).colorScheme.surfaceTint,
-                          ),
-                          SizedBox(width: 10,),
-                          Text(
-                          drawerMenuData[index].title,
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: selected 
-                              ? Theme.of(context).colorScheme.shadow
-                              : Theme.of(context).colorScheme.surfaceTint,
-                            ),
-                          ),
-                        
-                        ]
-                        
-                      ),
-                    ),
-                    
+            children: [
+              Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Container(
+              height: 30,
+              child: Row(
+                children: [
+                  GestureDetector(
+                    onTap: () => changeLang.toRus(),
+                    child: Image.asset('assets/rus.png'),
                   ),
-                );
-              }
+                  const SizedBox(width: 10,),
+                  GestureDetector(
+                    onTap: () => changeLang.toEng(),
+                    child: Image.asset('assets/eng.png'),
+                  )
+                ],
               ),
+            ),
+          ),
+              //--------------------------------------------menu
+              Container(
+                
+                padding: EdgeInsets.only(top: 70, left: 10, right: 10 ),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: drawerMenuData.length,
+                  itemBuilder: (context, index) {
+                    bool selected = isSelected == index;
+                    return Padding(           
+                      padding: const EdgeInsets.only(bottom: 5.0,),
+                      child: InkWell(
+                        onTap: (){
+                          Provider.of<ThemeProvider>(context, listen: false).switchButton(index);  
+                          Scrollable.ensureVisible(
+                            myKeys[index].currentContext!,
+                            duration: Duration(milliseconds: 500)
+                            );
+                     
+                        },
+                        borderRadius: BorderRadius.circular(7),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: selected 
+                            ? Theme.of(context).colorScheme.surfaceTint
+                            : Colors.transparent,
+                            borderRadius: BorderRadius.circular(7)
+                          ),
+                          padding: EdgeInsets.all(8),
+                          child: Row(
+                            children: [
+                              Icon(
+                                lang == 'eng' ? drawerMenuData[index].icon : drawerMenuDataRus[index].icon,
+                                color: selected 
+                                  ? Colors.amber
+                                  : Theme.of(context).colorScheme.surfaceTint,
+                              ),
+                              SizedBox(width: 10,),
+                              Text(
+                              lang == 'eng' ? drawerMenuData[index].title : drawerMenuDataRus[index].title,
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: selected 
+                                  ? Theme.of(context).colorScheme.shadow
+                                  : Theme.of(context).colorScheme.surfaceTint,
+                                ),
+                              ),
+                            
+                            ]
+                            
+                          ),
+                        ),
+                        
+                      ),
+                    );
+                  }
+                  ),
+              ),
+              
+            ],
+            
           ),
           //----------------------------------------------theme switch
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Light Mode',
-                style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      lang == 'eng' ? 'Light Mode' : 'Свет. Режим',
+                    style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
+                    ),
+                    CupertinoSwitch(
+                      value: context.watch<ThemeProvider>().isSwitched, 
+                      onChanged: (value) {
+                        context.read<ThemeProvider>().switchTheme();
+                      }),
+                  ],
                 ),
-                CupertinoSwitch(
-                  value: context.watch<ThemeProvider>().isSwitched, 
-                  onChanged: (value) {
-                    context.read<ThemeProvider>().switchTheme();
-                  }),
-              ],
-            ),
-          )
+              )
         ],
       ),
     );

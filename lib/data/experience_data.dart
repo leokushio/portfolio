@@ -8,4 +8,11 @@ class ExperienceDetails {
     ExperienceModel(icon: Icons.school, value: '3', title: 'Languages'),
     ExperienceModel(icon: Icons.dashboard, value: '2', title: 'Frameworks'),
   ];
+
+  final experienceDataRus = <ExperienceModel>[
+    ExperienceModel(icon: Icons.timelapse, value: '2 Года', title: 'Опыта'),
+    ExperienceModel(icon: Icons.web_stories, value: '5', title: 'Проекты'),
+    ExperienceModel(icon: Icons.school, value: '3', title: 'Языка'),
+    ExperienceModel(icon: Icons.dashboard, value: '2', title: 'Фреймворк'),
+  ];
 }

@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/data/experience_data.dart';
+import 'package:portfolio/providers/language_provider.dart';
 import 'package:portfolio/util/responsive.dart';
 import 'package:portfolio/widgets/custom_card.dart';
+import 'package:provider/provider.dart';
 
 class ExperienceDetailsCard extends StatelessWidget {
   const ExperienceDetailsCard({super.key});
 
   @override
   Widget build(BuildContext context) {
+    String lang = context.watch<LanguageProvider>().language;
     final experienceDetails = ExperienceDetails();
     return GridView.builder(
       itemCount: experienceDetails.experienceData.length,
@@ -38,7 +41,9 @@ class ExperienceDetailsCard extends StatelessWidget {
                 ),
             ),
             Text(
-              experienceDetails.experienceData[index].title,
+              lang == 'eng' 
+              ? experienceDetails.experienceData[index].title
+              : experienceDetails.experienceDataRus[index].title,
               style: TextStyle(
                   fontSize: 15,
                   color: Theme.of(context).colorScheme.primary

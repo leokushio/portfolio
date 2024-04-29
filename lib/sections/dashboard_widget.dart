@@ -77,13 +77,7 @@ class DashboardWidget extends StatelessWidget {
                     ),
                   GamedevWidget(),
                   if(Responsive.isMobile(context))
-                  const SocialsData()
-
-                  
-                  
-                  
-                  
-            
+                  const SocialsData()    
                 ],
               ),
             ),
@@ -92,17 +86,5 @@ class DashboardWidget extends StatelessWidget {
       ],
     );
   }
-  Widget _myTitle (BuildContext context) {
-    return SizedBox(
-          width: double.maxFinite,
-          child: Text(
-            'MY PORTFOLIO',
-            style: TextStyle(
-              fontSize: 30.0,
-              color: Theme.of(context).colorScheme.inversePrimary,
-              fontWeight: FontWeight.w300
-            ),
-            ),
-        );
-  }
+  
 }

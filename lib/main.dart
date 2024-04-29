@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio/providers/language_provider.dart';
 import 'package:portfolio/providers/theme_provider.dart';
 import 'package:portfolio/screens/main_screen.dart';
 // import 'package:portfolio/themes/dark_mode.dart';
@@ -8,10 +9,15 @@ import 'package:portfolio/themes/theme_modes.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider(
-    create: (context) => ThemeProvider(),
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ThemeProvider(),),
+        ChangeNotifierProvider(create: (context) => LanguageProvider(),),
+      ],
     child: const MainApp(),
-  ));
+  )
+  );
 }
 
 class MainApp extends StatelessWidget {

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:portfolio/providers/language_provider.dart';
 import 'package:portfolio/util/responsive.dart';
+import 'package:provider/provider.dart';
 
 class MyTitle extends StatelessWidget {
   const MyTitle({super.key});
 
   @override
   Widget build(BuildContext context) {
+    String lang = context.watch<LanguageProvider>().language;
     return SizedBox(
       height: 60, 
       child: Padding(
@@ -24,7 +27,7 @@ class MyTitle extends StatelessWidget {
                 )
                 ),
               Text(
-                'MY PORTFOLIO',
+                lang == 'eng' ? 'MY PORTFOLIO' : 'МОЙ ПОРТФОЛИО',
                 style: TextStyle(
                   fontSize: 25.0,
                   color: Theme.of(context).colorScheme.inversePrimary,
