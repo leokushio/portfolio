@@ -33,7 +33,9 @@ class ExperienceDetailsCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Text(
-                experienceDetails.experienceData[index].value,
+                lang == 'eng' 
+              ? experienceDetails.experienceData[index].value
+              : experienceDetails.experienceDataRus[index].value,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold

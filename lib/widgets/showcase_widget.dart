@@ -85,14 +85,6 @@ class ShowcaseWidget extends StatelessWidget {
                         ),
                     ],
                   ),
-                  
-                  // SegmentedButton(
-                  //   segments: [
-                  //     ButtonSegment(value: 1),
-                  //     ButtonSegment(value: 1),
-        
-                  //   ], 
-                  //   selected: Set())
                     
                 ],
               ),
