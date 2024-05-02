@@ -20,8 +20,8 @@ class SocialsData extends StatelessWidget {
       child: ListView.builder(
         itemCount: socialsList.length,
         itemBuilder: (context, index){
-          return socialsList[index];
-        }
+          return socialsList[index];  
+          }     
         ),
     );
   }

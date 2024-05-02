@@ -19,10 +19,14 @@ class ShowcaseWidget extends StatelessWidget {
     final List<String> appGithubUrl = [
       'https://flutter.dev',
       'https://github.com/leokushio/portfolio',
+      'https://flutter.dev',
+      'https://github.com/leokushio/portfolio',
     ];
     final mockups = <MockupModel>[
       MockupModel(assetString: 'assets/portfolio_mockup.png', title: 'Portfolio App'),
       MockupModel(assetString: 'assets/chatapp_mockup.png', title: 'Chat app'),
+      MockupModel(assetString: 'assets/chatapp_mockup.png', title: 'Chat app'),
+      MockupModel(assetString: 'assets/portfolio_mockup.png', title: 'Portfolio App'),
     ];
     final lang = context.watch<LanguageProvider>().language;
     return Column(

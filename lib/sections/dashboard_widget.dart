@@ -34,7 +34,7 @@ class DashboardWidget extends StatelessWidget {
         const MyTitle(),
         Expanded(
           child: SingleChildScrollView(
-            controller: projectContainer,
+            // controller: projectContainer, ---- not sure what for, but kept
             child: Padding(
               padding: const EdgeInsets.only(left: 18,right: 18),
               child: Column(

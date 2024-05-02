@@ -16,6 +16,7 @@ class MainScreen extends StatelessWidget {
     final dashKey = GlobalKey();
     final projectKey = GlobalKey();
     final socialKey = GlobalKey();
+    final gameDevKey = GlobalKey();
     final ScrollController projectContainer = ScrollController();
     final isDesktop = Responsive.isDesktop(context);
     return Scaffold(
