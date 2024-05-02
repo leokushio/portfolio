@@ -48,6 +48,7 @@ class ShowcaseWidget extends StatelessWidget {
         ),
         //-----------------------------------------grid
         GridView.builder(
+          physics: const ScrollPhysics(),
           shrinkWrap: true,
           itemCount: mockups.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

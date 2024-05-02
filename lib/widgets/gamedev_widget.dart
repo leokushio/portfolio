@@ -33,6 +33,7 @@ class GamedevWidget extends StatelessWidget {
         ),
         //-----------------------------------------grid
         GridView.builder(
+          physics: const ScrollPhysics(),
           shrinkWrap: true,
           itemCount: mockup.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

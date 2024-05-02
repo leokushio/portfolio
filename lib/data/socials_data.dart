@@ -18,6 +18,7 @@ class SocialsData extends StatelessWidget {
       
       constraints: BoxConstraints(maxHeight: 200, maxWidth: 300),
       child: ListView.builder(
+        physics: const ScrollPhysics(),
         itemCount: socialsList.length,
         itemBuilder: (context, index){
           return socialsList[index];  
