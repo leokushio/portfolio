@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/data/socials_data.dart';
+import 'package:portfolio/providers/scroll_nav_provider.dart';
 import 'package:portfolio/providers/theme_provider.dart';
 import 'package:portfolio/sections/profile_column_widget.dart';
 import 'package:portfolio/util/responsive.dart';
+import 'package:portfolio/widgets/about_me.dart';
 import 'package:portfolio/widgets/barchart_card.dart';
 
 import 'package:portfolio/widgets/barchart_sideinfo_buttom.dart';
@@ -17,13 +19,15 @@ class DashboardWidget extends StatelessWidget {
   final ScrollController projectContainer;
   final GlobalKey projectKey;
   final GlobalKey dashKey;
-  final GlobalKey socialtKey;
+  final GlobalKey socialKey;
+  final GlobalKey gameDevKey;
   const DashboardWidget({
     super.key, 
     required this.projectContainer,
     required this.projectKey,
     required this.dashKey,
-    required this.socialtKey
+    required this.socialKey,
+    required this.gameDevKey
     });
 
   @override
@@ -50,8 +54,9 @@ class DashboardWidget extends StatelessWidget {
                     onVisibilityChanged: (info) {
                       var visiblePercentage = info.visibleFraction * 100;
                       if(visiblePercentage > 90){
-                        Provider.of<ThemeProvider>(context, listen: false).switchButton(0);
+                        Provider.of<ScrollNavProvider>(context, listen: false).switchButton(0);
                       }
+                      
                     },
                     ),
                   const SizedBox(height: 15,),
@@ -71,11 +76,21 @@ class DashboardWidget extends StatelessWidget {
                     onVisibilityChanged: (info) {
                       var visiblePercentage = info.visibleFraction * 100;
                       if(visiblePercentage > 20){
-                        Provider.of<ThemeProvider>(context, listen: false).switchButton(1);
+                        Provider.of<ScrollNavProvider>(context, listen: false).switchButton(1);
                       }
                     },
                     ),
                   GamedevWidget(),
+                  VisibilityDetector(
+                    key: socialKey,
+                    onVisibilityChanged: (info) {
+                      var visiblePercentage = info.visibleFraction * 100;
+                      if(visiblePercentage > 20){
+                        Provider.of<ScrollNavProvider>(context, listen: false).switchButton(2);
+                      }
+                    },
+                    child: AboutMe()
+                    ),
                   if(Responsive.isMobile(context))
                   const SocialsData()    
                 ],

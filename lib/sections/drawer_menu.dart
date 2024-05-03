@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/data/drawer_menu_data.dart';
 import 'package:portfolio/providers/language_provider.dart';
+import 'package:portfolio/providers/scroll_nav_provider.dart';
 import 'package:portfolio/providers/theme_provider.dart';
 import 'package:portfolio/sections/dashboard_widget.dart';
 import 'package:portfolio/themes/theme_modes.dart';
@@ -10,12 +11,14 @@ import 'package:provider/provider.dart';
 class DrawerMenu extends StatefulWidget {
   final GlobalKey projectKey;
   final GlobalKey dashKey;
-  final GlobalKey socialtKey;
+  final GlobalKey socialKey;
+  final GlobalKey gameDevKey;
   const DrawerMenu({
     super.key, 
     required this.projectKey,
     required this.dashKey,
-    required this.socialtKey
+    required this.socialKey,
+    required this.gameDevKey
     });
 
   @override
@@ -29,9 +32,10 @@ class _DrawerMenuState extends State<DrawerMenu> {
     final  myKeys = <GlobalKey>[  
       widget.dashKey,
       widget.projectKey,
-      widget.socialtKey,
+      // widget.gameDevKey,
+      widget.socialKey,
     ];
-    final isSelected = context.read<ThemeProvider>().isSelected;
+    final isSelected = context.watch<ScrollNavProvider>().isSelected;
     final changeLang = context.read<LanguageProvider>();
     String lang = context.watch<LanguageProvider>().language;
     return Container(
@@ -75,11 +79,14 @@ class _DrawerMenuState extends State<DrawerMenu> {
                       padding: const EdgeInsets.only(bottom: 5.0,),
                       child: InkWell(
                         onTap: (){
-                          Provider.of<ThemeProvider>(context, listen: false).switchButton(index);  
+                          // Provider.of<ScrollNavProvider>(context, listen: false).switchButton(index); 
+                          context.read<ScrollNavProvider>().switchButton(index); 
                           Scrollable.ensureVisible(
                             myKeys[index].currentContext!,
-                            duration: Duration(milliseconds: 500)
+                            duration: Duration(milliseconds: 0)
                             );
+                            // print(index);
+                            // print(isSelected);
                      
                         },
                         borderRadius: BorderRadius.circular(7),

@@ -23,7 +23,7 @@ class MainScreen extends StatelessWidget {
       drawer: !isDesktop
       ? SizedBox(
         width: 250,
-        child: DrawerMenu(projectKey: projectKey,dashKey: dashKey,socialtKey: socialKey,),
+        child: DrawerMenu(projectKey: projectKey,dashKey: dashKey,socialKey: socialKey,gameDevKey: gameDevKey,),
       )
       : null,
       body: SafeArea(
@@ -33,11 +33,11 @@ class MainScreen extends StatelessWidget {
             if (isDesktop)
             Expanded(
               flex: 2,
-              child: DrawerMenu(projectKey: projectKey,dashKey: dashKey,socialtKey: socialKey,)
+              child: DrawerMenu(projectKey: projectKey,dashKey: dashKey,socialKey: socialKey,gameDevKey: gameDevKey,)
               ),
             Expanded(
               flex: 7,
-              child: DashboardWidget(projectContainer: projectContainer,projectKey: projectKey,dashKey: dashKey,socialtKey: socialKey,)
+              child: DashboardWidget(projectContainer: projectContainer,projectKey: projectKey,dashKey: dashKey,socialKey: socialKey,gameDevKey: gameDevKey,)
               ),
             if (!Responsive.isMobile(context))
             Expanded(
