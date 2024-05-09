@@ -17,16 +17,16 @@ class ShowcaseWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<String> appGithubUrl = [
-      'https://flutter.dev',
       'https://github.com/leokushio/portfolio',
-      'https://flutter.dev',
-      'https://github.com/leokushio/portfolio',
+      'https://github.com/leokushio/chat_app',
+      'https://github.com/leokushio/boxing_timer',
+      'https://github.com/leokushio/dailly_jokes',
     ];
     final mockups = <MockupModel>[
       MockupModel(assetString: 'assets/portfolio_mockup.png', title: 'Portfolio App'),
       MockupModel(assetString: 'assets/chatapp_mockup.png', title: 'Chat app'),
-      MockupModel(assetString: 'assets/chatapp_mockup.png', title: 'Chat app'),
-      MockupModel(assetString: 'assets/portfolio_mockup.png', title: 'Portfolio App'),
+      MockupModel(assetString: 'assets/chatapp_mockup.png', title: 'Training Timer'),
+      MockupModel(assetString: 'assets/portfolio_mockup.png', title: 'Jokes App'),
     ];
     final lang = context.watch<LanguageProvider>().language;
     return Column(
@@ -34,12 +34,12 @@ class ShowcaseWidget extends StatelessWidget {
         //--------------------------------------heading
         Padding(
           // key: projectKey,
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Container(
             width: double.maxFinite,
             child: Text(
               lang == 'eng' ? 'My Projects' : 'Проекты',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w100
               ),
@@ -72,7 +72,7 @@ class ShowcaseWidget extends StatelessWidget {
                 children: [
                   Text(
                     mockups[index].title,
-                    style: TextStyle(fontWeight: FontWeight.w500),
+                    style: const TextStyle(fontWeight: FontWeight.w500),
                     ),
                   
                   
@@ -80,15 +80,15 @@ class ShowcaseWidget extends StatelessWidget {
                     children: [
                       ElevatedButton(
                         onPressed:() => goToWebPage(appGithubUrl[index]), 
-                        style: ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.all(10))),
-                        child: Text(style:  TextStyle(fontSize: 12), 'Github repo')),
+                        style: const ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.all(10))),
+                        child: const Text(style:  TextStyle(fontSize: 12), 'Github repo')),
         
-                      SizedBox(width: 5,),
+                      const SizedBox(width: 5,),
         
                       ElevatedButton(
                         onPressed:() {}, 
-                        style: ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.all(2))),
-                        child: Text(style:  TextStyle(fontSize: 12), 'Demo'),
+                        style: const ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.all(2))),
+                        child: const Text(style:  TextStyle(fontSize: 12), 'Demo'),
         
                         ),
                     ],

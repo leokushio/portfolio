@@ -80,7 +80,8 @@ class DashboardWidget extends StatelessWidget {
                       }
                     },
                     ),
-                  GamedevWidget(),
+                  const GamedevWidget(),
+                  
                   VisibilityDetector(
                     key: socialKey,
                     onVisibilityChanged: (info) {

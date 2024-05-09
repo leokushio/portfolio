@@ -19,10 +19,10 @@ class GamedevWidget extends StatelessWidget {
         //--------------------------------------heading
         Padding(
           // key: projectKey,
-          padding: EdgeInsets.only(top: 25, bottom: 12),
+          padding: const EdgeInsets.only(top: 25, bottom: 12),
           child: Container(
             width: double.maxFinite,
-            child: Text(
+            child: const Text(
               'Flutter FLAME. GameDev Projects',
               style: TextStyle(
                 fontSize: 20,
@@ -49,11 +49,15 @@ class GamedevWidget extends StatelessWidget {
                 fit: BoxFit.fill
                 )
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Center(
-                child: Text('Comingsoon!'),
-              )
+            child: Center(
+              child: Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.tertiary,
+                borderRadius: BorderRadius.circular(15)
+                ),
+                child: Text('Comingsoon!')
+                ),
             ),
           ),
         
